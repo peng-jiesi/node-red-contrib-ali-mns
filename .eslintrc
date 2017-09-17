@@ -1,0 +1,12 @@
+{
+  "env": {
+    "mocha": true
+  },
+  "no-unused-vars": [
+    "error",
+    {
+      "argsIgnorePattern": "^next$"
+    }
+  ],
+  "extends": "standard"
+}

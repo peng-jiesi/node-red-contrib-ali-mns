@@ -1,0 +1,87 @@
+<script type="text/x-red" data-template-name="ali-mns-sms">
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tasks"></i>AccountId</label>
+        <input type="text" id="node-input-accountId" placeholder="Account Id">
+    </div>
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tasks"></i>AKId</label>
+        <input type="text" id="node-input-accessKeyId" placeholder="Access Key Id">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tasks"></i>AKSecret</label>
+        <input type="text" id="node-input-accessKeySecret" placeholder="Access Key Secret">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tasks"></i>Topic</label>
+        <input type="text" id="node-input-topic" placeholder="MNS Topic">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tasks"></i>Region</label>
+        <input type="text" id="node-input-Region" placeholder="Ali Cloud Region">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tasks"></i>TemplateCode</label>
+        <input type="text" id="node-input-TemplateCode" placeholder="TemplateCode">
+    </div>
+
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tasks"></i>FreeSignName</label>
+        <input type="text" id="node-input-FreeSignName" placeholder="FreeSignName">
+    </div>
+
+    <br/>
+    <div class="form-row">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+
+</script>
+
+<script type="text/x-red" data-help-name="ali-mns-sms">
+<p>Send SMS by  <a href="https://help.aliyun.com/document_detail/27497.html?spm=5176.product27412.6.722.JbfDWx"> ali-mns </a> </p>
+   <h3>Input</h3>
+       <dl class="message-properties">
+       <dt>payload.Receiver
+           <span class="property-type">string</span> Fill in the recipient's mobile phone number, a plurality of numbers separated by commas
+       </dt>
+       <dl class="message-properties">
+       <dt>payload.SmsParams
+           <span class="property-type">json string</span> </dt>
+   <h3>Output</h3>
+       <dl class="message-properties">
+       <dt>payload.mns
+           <span class="property-type">Object</span> Response from ali-mns
+       </dt>
+
+</script>
+const {Receiver, SmsParams} = msg.payload
+<script type="text/javascript">
+  RED.nodes.registerType('ali-mns-sms', {
+    category: 'ali',
+    defaults: {
+      name: {value: ''},
+      topic: {value: 'sms.topic-cn-hangzhou', required: true},
+      region: {value: 'hangzhou', required: true},
+      accessKeySecret: {required: true},
+      accountId: {required: true},
+      accessKeyId: {required: true},
+      TemplateCode: {required: true},
+      FreeSignName: {required: true},
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: 'envelope.png',
+    color: '#F3B567',
+    label: function () {
+      if (this.FreeSignName && this.TemplateCode) {
+        return this.FreeSignName + ' - ' + this.TemplateCode
+      } else {
+        return 'ali-mns'
+      }
+    }
+  })
+</script>

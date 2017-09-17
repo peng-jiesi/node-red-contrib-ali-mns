@@ -1,0 +1,23 @@
+{
+  "name": "node-red-contrib-ali-mns",
+  "version": "0.0.1",
+  "description": "node-red module for ali-mns",
+  "main": "src/ali-mns.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Jason Peng",
+  "license": "MIT",
+  "node-red" : {
+    "nodes": {
+      "ali-mns": "src/ali-mns.js"
+    }
+  },
+  "dependencies": {
+    "ali-mns": "^2.6.4"
+  },
+  "devDependencies": {
+    "eslint-config-standard": "^10.2.1",
+    "standard": "^10.0.3"
+  }
+}
